@@ -109,7 +109,7 @@ class PaymentPersistenceService(
     fun updateAmount(paymentId: Long, amount: String): Payment {
         val payment: Payment = paymentRepository.findByIdOrNull(paymentId)
             ?: throw NotFoundException(41, "결제 정보를 찾을 수 없습니다.")
-        payment.updateAmount(amount.toLong())
+        payment.updateAmount(amount.toInt())
         return payment
     }
 
@@ -144,7 +144,7 @@ class PaymentPersistenceService(
     @Transactional
     fun updateAmountForModifyPost(postId: Long, post: Post) {
         val payment: Payment = paymentRepository.findByPostIdAndPaymentStatus(postId, PaymentStatus.READY).first()
-        payment.update(post.totalPay.toLong(), post.escortHours)
+        payment.update(post.totalPay.toInt(), post.escortHours)
     }
 
     fun getDailyAnalytics(startDate: LocalDateTime, endDate: LocalDateTime): List<PaymentDailyAnalyticsDto> {

@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 
 data class PaymentResponse(
     val id: Long?,
-    val amount: Long,
+    val amount: Int,
     val hourlyPaySnapshot: Int,
     val hours: BigDecimal,
     val orderId: String?,
@@ -19,7 +19,7 @@ data class PaymentResponse(
 ) {
     constructor(payment: Payment) : this(
         payment.id,
-        payment.amount.longValueExact(),
+        payment.amount.toInt(),
         payment.hourlyPaySnapshot,
         payment.hours,
         payment.orderId,

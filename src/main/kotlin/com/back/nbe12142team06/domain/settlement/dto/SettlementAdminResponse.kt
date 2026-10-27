@@ -6,9 +6,9 @@ import java.time.LocalDate
 
 data class SettlementAdminResponse(
     val id: Long,
-    val payoutAmount: Long,
-    val platformFee: Long,
-    val penaltyAmount: Long,
+    val payoutAmount: Int,
+    val platformFee: Int,
+    val penaltyAmount: Int,
     val status: SettlementStatus,
     val settledAt: LocalDate,
     val applicationId: Long,
@@ -17,9 +17,9 @@ data class SettlementAdminResponse(
 ) {
     constructor(settlement: Settlement) : this(
         id = settlement.id!!,
-        payoutAmount = settlement.payoutAmount.longValueExact(),
-        platformFee = settlement.platformFee.longValueExact(),
-        penaltyAmount = settlement.penaltyAmount.longValueExact(),
+        payoutAmount = settlement.payoutAmount.toInt(),
+        platformFee = settlement.platformFee.toInt(),
+        penaltyAmount = settlement.penaltyAmount.toInt(),
         status = settlement.settlementStatus,
         settledAt = settlement.settledDate,
         applicationId = settlement.application.id!!,
