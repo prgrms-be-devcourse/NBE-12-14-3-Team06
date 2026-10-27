@@ -7,8 +7,8 @@ import java.time.LocalDateTime
 
 data class PaymentAdminResponse(
     val id: Long?,
-    val amount: Int,
-    val balanceAmount: Int,
+    val amount: Long,
+    val balanceAmount: Long,
     val hourlyPaySnapshot: Int,
     val hours: BigDecimal,
     val orderId: String?,
@@ -23,8 +23,8 @@ data class PaymentAdminResponse(
 ) {
     constructor(payment: Payment): this(
         payment.id,
-        payment.amount.toInt(),
-        payment.balanceAmount.toInt(),
+        payment.amount.longValueExact(),
+        payment.balanceAmount.longValueExact(),
         payment.hourlyPaySnapshot,
         payment.hours,
         payment.orderId,

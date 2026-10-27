@@ -156,15 +156,15 @@ class Payment(
         this.settlement = settlement
     }
 
-    fun updateAmount(amount: Int) {
-        this.amount = BigDecimal.valueOf(amount.toLong())
+    fun updateAmount(amount: Long) {
+        this.amount = BigDecimal.valueOf(amount)
     }
 
     fun updateCanceledAt() {
         this.canceledAt = LocalDateTime.now()
     }
 
-    fun update(amount: Int, hours: BigDecimal) {
+    fun update(amount: Long, hours: BigDecimal) {
         updateAmount(amount)
         this.hours = hours
     }
